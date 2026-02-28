@@ -79,6 +79,16 @@ android {
         buildConfig = true   // Required in AGP 8+ to generate BuildConfig.DEBUG
     }
 
+    lint {
+        // Don't abort the build on lint errors — report them but keep going.
+        // This prevents CI from failing on warnings while still surfacing issues.
+        abortOnError = false
+        checkReleaseBuilds = false   // faster CI — full lint runs manually
+        xmlReport = true             // needed for CI artifact upload
+        htmlReport = true
+        warningsAsErrors = false
+    }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"

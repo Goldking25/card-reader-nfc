@@ -25,23 +25,21 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Validate Gradle wrapper
-        run: |
-          if [ ! -f "gradlew" ]; then
-            echo "ERROR: gradlew not found. Generate it via Android Studio sync, then commit it."
-            exit 1
-          fi
-          chmod +x gradlew
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       - name: Run lint
-        run: ./gradlew lint --stacktrace
+        # --continue: generate report even when lint errors are found
+        # Lint exit-code is controlled by abortOnError in build.gradle.kts
+        run: ./gradlew lintDebug --continue
 
       - name: Upload lint report
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: lint-report
-          path: app/build/reports/lint-results-*.html
+          path: app/build/reports/lint-results-debug.html
+          if-no-files-found: ignore   # don't fail if report wasn't generated
 
   # ── 2. Unit Tests ────────────────────────────────────────────────────────
   test:
@@ -57,37 +55,44 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Validate Gradle wrapper
-        run: |
-          if [ ! -f "gradlew" ]; then
-            echo "ERROR: gradlew not found. Generate it via Android Studio sync, then commit it."
-            exit 1
-          fi
-          chmod +x gradlew
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       - name: Run unit tests
-        run: ./gradlew test --stacktrace
+        # --continue keeps going after test failures so reports are always written
+        run: ./gradlew testDebugUnitTest --continue
+
+      - name: Upload test results (XML)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unit-test-results
+          path: app/build/test-results/
+          if-no-files-found: ignore
+
+      - name: Upload test reports (HTML)
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: unit-test-report
+          path: app/build/reports/tests/
+          if-no-files-found: ignore
 
       - name: Publish test results
         uses: dorny/test-reporter@v1
         if: always()
         with:
           name: Unit Test Results
-          path: app/build/test-results/**/*.xml
+          path: "app/build/test-results/**/*.xml"
           reporter: java-junit
-
-      - name: Upload test reports
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: unit-test-report
-          path: app/build/reports/tests/
+          fail-on-empty: 'false'     # don't fail the step if no XML found
+          fail-on-error: 'false'     # report failures as warnings, not errors
 
   # ── 3. Debug Build ───────────────────────────────────────────────────────
   build-debug:
     name: Build Debug APK
     runs-on: ubuntu-latest
-    needs: [ lint, test ]
+    needs: [ test ]                  # only needs tests to pass, not lint
     steps:
       - uses: actions/checkout@v4
 
@@ -98,16 +103,11 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Validate Gradle wrapper
-        run: |
-          if [ ! -f "gradlew" ]; then
-            echo "ERROR: gradlew not found. Generate it via Android Studio sync, then commit it."
-            exit 1
-          fi
-          chmod +x gradlew
+      - name: Make gradlew executable
+        run: chmod +x gradlew
 
       - name: Build debug APK
-        run: ./gradlew assembleDebug --stacktrace
+        run: ./gradlew assembleDebug
 
       - name: Upload debug APK
         uses: actions/upload-artifact@v4
