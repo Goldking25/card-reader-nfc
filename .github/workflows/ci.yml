@@ -59,8 +59,17 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run unit tests
-        # --continue keeps going after test failures so reports are always written
+        # --continue keeps going after failures so reports are always written
         run: ./gradlew testDebugUnitTest --continue
+
+      - name: Print test failures to log
+        if: always()
+        run: |
+          echo "=== FAILED TESTS ==="
+          find app/build/test-results -name "*.xml" 2>/dev/null | xargs grep -l "failure\|error" 2>/dev/null | while read f; do
+            echo "--- $f ---"
+            cat "$f"
+          done || echo "No test result XML files found"
 
       - name: Upload test results (XML)
         uses: actions/upload-artifact@v4
