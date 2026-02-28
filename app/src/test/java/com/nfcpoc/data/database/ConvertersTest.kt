@@ -23,7 +23,7 @@ class ConvertersTest {
 
     @Test
     fun `CardType round-trip preserves all enum values`() {
-        CardType.entries.forEach { type ->
+        CardType.values().forEach { type ->
             val json = converters.fromCardType(type)
             val restored = converters.toCardType(json)
             assertThat(restored).isEqualTo(type)
@@ -77,13 +77,19 @@ class ConvertersTest {
     fun `MifareSector list round-trip preserves all fields`() {
         val sectors = listOf(
             MifareSector(
-                index = 0,
-                blocks = listOf("AABBCCDD00112233", "FFEEDDCC99887766"),
-                authenticated = true,
-                keyType = "A",
-                keyUsed = "FFFFFFFFFFFF"
+                index          = 0,
+                authenticated  = true,
+                keyUsed        = "FFFFFFFFFFFF",
+                keyType        = "A",
+                blocks         = listOf("AABBCCDD00112233", "FFEEDDCC99887766")
             ),
-            MifareSector(index = 1, blocks = emptyList(), authenticated = false)
+            MifareSector(
+                index          = 1,
+                authenticated  = false,
+                keyUsed        = null,
+                keyType        = null,
+                blocks         = emptyList()
+            )
         )
         val json = converters.fromMifareSectors(sectors)
         val restored = converters.toMifareSectors(json)
@@ -92,6 +98,7 @@ class ConvertersTest {
         assertThat(restored[0].authenticated).isTrue()
         assertThat(restored[0].keyUsed).isEqualTo("FFFFFFFFFFFF")
         assertThat(restored[1].authenticated).isFalse()
+        assertThat(restored[1].keyUsed).isNull()
     }
 
     @Test
