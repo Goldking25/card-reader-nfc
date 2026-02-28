@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -15,7 +17,7 @@ plugins {
 //   signing.keyAlias=nfc_poc
 //   signing.keyPassword=yourpassword
 
-val localProps = java.util.Properties().apply {
+val localProps = Properties().apply {
     val f = rootProject.file("local.properties")
     if (f.exists()) load(f.inputStream())
 }
