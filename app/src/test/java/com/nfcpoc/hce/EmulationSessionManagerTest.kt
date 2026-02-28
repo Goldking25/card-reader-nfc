@@ -5,31 +5,17 @@ import com.nfcpoc.data.model.CardType
 import com.nfcpoc.data.model.NfcCard
 import org.junit.After
 import org.junit.Before
-import org.junit.BeforeClass
 import org.junit.Test
-import timber.log.Timber
 
 /**
  * Unit tests for [EmulationSessionManager].
  *
- * Real API:
- *   - activeCard   : NfcCard?  (property)
- *   - isEmulating  : Boolean   (property)
- *   - loadCard(card)           — loads card AND sets isEmulating = true
- *   - clearSession()           — clears card and sets isEmulating = false
- *   - routeApdu(bytes)         — routes to router or returns SW_COMMAND_NOT_ALLOWED
+ * NOTE: Timber calls inside EmulationSessionManager are safe in JVM unit tests
+ * because with no tree planted, all Timber.i/w/d calls are silent no-ops.
+ * DO NOT plant Timber.DebugTree() — it delegates to android.util.Log which
+ * is not available in the pure JVM test environment.
  */
 class EmulationSessionManagerTest {
-
-    companion object {
-        @JvmStatic
-        @BeforeClass
-        fun initTimber() {
-            // Plant a simple stdout tree so Timber calls inside the code under test
-            // don't throw in a JVM unit test environment (no Android runtime)
-            if (Timber.treeCount == 0) Timber.plant(Timber.DebugTree())
-        }
-    }
 
     private val testCard = NfcCard(
         uid      = "04:DE:AD:BE",

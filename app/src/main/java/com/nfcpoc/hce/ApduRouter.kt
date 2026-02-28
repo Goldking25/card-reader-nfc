@@ -82,9 +82,17 @@ class ApduRouter(private val card: NfcCard) {
         return if (isPpse || matchesCard) {
             selectedAid = aidHex
             sequenceIndex = 0 // Reset sequence on new SELECT
-            Timber.i("HCE: SELECT matched AID $aidHex → returning first stored response")
-            // Find first SELECT exchange in log and return its response
-            val selectExchange = card.apduLog.firstOrNull {
+            Timber.i("HCE: SELECT matched AID $aidHex → searching log for response")
+
+            // 1st choice: exchange whose command contains THIS specific AID (exact match)
+            val specificExchange = card.apduLog.firstOrNull {
+                it.command.startsWith("00A404", ignoreCase = true) &&
+                        it.command.contains(aidHex, ignoreCase = true) &&
+                        it.response.length >= 4 &&
+                        !it.response.equals("ERROR", ignoreCase = true)
+            }
+            // 2nd choice: fall back to the first SELECT exchange in the log
+            val selectExchange = specificExchange ?: card.apduLog.firstOrNull {
                 it.command.startsWith("00A404", ignoreCase = true) &&
                         it.response.length >= 4 &&
                         !it.response.equals("ERROR", ignoreCase = true)
