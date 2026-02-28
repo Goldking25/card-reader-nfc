@@ -9,6 +9,8 @@ jobs:
   release:
     name: Build, Sign & Release
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # required to create GitHub Releases and upload assets
 
     steps:
       - uses: actions/checkout@v4
