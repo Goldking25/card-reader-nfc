@@ -45,6 +45,9 @@ jobs:
   test:
     name: Unit Tests
     runs-on: ubuntu-latest
+    permissions:
+      checks: write        # required by dorny/test-reporter to create check runs
+      contents: read
     steps:
       - uses: actions/checkout@v4
 
