@@ -32,9 +32,9 @@ jobs:
       # Add to GitHub Secrets as KEYSTORE_BASE64
       - name: Decode keystore
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" \
-            | tr -d '\r\n ' \
-            | base64 --decode > $RUNNER_TEMP/nfc_poc_key.jks
+          printf '%s' "${{ secrets.KEYSTORE_BASE64 }}" \
+            | tr -d '[:space:]' \
+            | base64 --decode --ignore-garbage > $RUNNER_TEMP/nfc_poc_key.jks
           echo "Keystore size: $(wc -c < $RUNNER_TEMP/nfc_poc_key.jks) bytes"
 
       # ── Build signed release APK ──────────────────────────────────────
