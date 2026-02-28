@@ -1,0 +1,226 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.nfcpoc.debug"
+4    android:versionCode="1"
+5    android:versionName="1.0.0-debug" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="35" />
+10
+11    <!-- NFC Permissions -->
+12    <uses-permission android:name="android.permission.NFC" />
+12-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:5:5-62
+12-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:5:22-59
+13
+14    <uses-feature
+14-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:6:5-8:35
+15        android:name="android.hardware.nfc"
+15-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:7:9-44
+16        android:required="true" />
+16-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:8:9-32
+17    <uses-feature
+17-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:9:5-11:36
+18        android:name="android.hardware.nfc.hce"
+18-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:10:9-48
+19        android:required="false" />
+19-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:11:9-33
+20
+21    <permission
+21-->[androidx.core:core:1.12.0] C:\Users\manig\.gradle\caches\transforms-3\38d8680aa6673a791c816129c4d9c472\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+22        android:name="com.nfcpoc.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+22-->[androidx.core:core:1.12.0] C:\Users\manig\.gradle\caches\transforms-3\38d8680aa6673a791c816129c4d9c472\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+23        android:protectionLevel="signature" />
+23-->[androidx.core:core:1.12.0] C:\Users\manig\.gradle\caches\transforms-3\38d8680aa6673a791c816129c4d9c472\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+24
+25    <uses-permission android:name="com.nfcpoc.debug.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+25-->[androidx.core:core:1.12.0] C:\Users\manig\.gradle\caches\transforms-3\38d8680aa6673a791c816129c4d9c472\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+25-->[androidx.core:core:1.12.0] C:\Users\manig\.gradle\caches\transforms-3\38d8680aa6673a791c816129c4d9c472\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+26
+27    <application
+27-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:13:5-61:19
+28        android:name="com.nfcpoc.NfcPocApplication"
+28-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:14:9-42
+29        android:allowBackup="true"
+29-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:15:9-35
+30        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+30-->[androidx.core:core:1.12.0] C:\Users\manig\.gradle\caches\transforms-3\38d8680aa6673a791c816129c4d9c472\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+31        android:debuggable="true"
+32        android:extractNativeLibs="false"
+33        android:icon="@mipmap/ic_launcher"
+33-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:16:9-43
+34        android:label="@string/app_name"
+34-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:17:9-41
+35        android:roundIcon="@mipmap/ic_launcher_round"
+35-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:18:9-54
+36        android:supportsRtl="true"
+36-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:19:9-35
+37        android:testOnly="true"
+38        android:theme="@style/Theme.NfcPoc" >
+38-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:20:9-44
+39
+40        <!-- Main Activity: handles NFC tag dispatch -->
+41        <activity
+41-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:23:9-38:20
+42            android:name="com.nfcpoc.ui.MainActivity"
+42-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:24:13-44
+43            android:exported="true"
+43-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:25:13-36
+44            android:launchMode="singleTop" >
+44-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:26:13-43
+45            <intent-filter>
+45-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:27:13-30:29
+46                <action android:name="android.intent.action.MAIN" />
+46-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:28:17-69
+46-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:28:25-66
+47
+48                <category android:name="android.intent.category.LAUNCHER" />
+48-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:29:17-77
+48-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:29:27-74
+49            </intent-filter>
+50            <!-- Tech-based NFC dispatch -->
+51            <intent-filter>
+51-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:32:13-34:29
+52                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+52-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:33:17-77
+52-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:33:25-74
+53            </intent-filter>
+54
+55            <meta-data
+55-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:35:13-37:59
+56                android:name="android.nfc.action.TECH_DISCOVERED"
+56-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:36:17-66
+57                android:resource="@xml/nfc_tech_filter" />
+57-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:37:17-56
+58        </activity>
+59
+60        <!-- Card Detail Screen -->
+61        <activity
+61-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:41:9-45:51
+62            android:name="com.nfcpoc.ui.cards.CardDetailActivity"
+62-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:42:13-56
+63            android:exported="false"
+63-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:43:13-37
+64            android:parentActivityName="com.nfcpoc.ui.MainActivity"
+64-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:44:13-58
+65            android:theme="@style/Theme.NfcPoc" />
+65-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:45:13-48
+66
+67        <!-- HCE Emulation Service -->
+68        <service
+68-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:48:9-59:19
+69            android:name="com.nfcpoc.hce.HceEmulationService"
+69-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:49:13-52
+70            android:exported="true"
+70-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:50:13-36
+71            android:permission="android.permission.BIND_NFC_SERVICE" >
+71-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:51:13-69
+72            <intent-filter>
+72-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:52:13-55:29
+73                <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE" />
+73-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:53:17-93
+73-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:53:25-90
+74
+75                <category android:name="android.intent.category.DEFAULT" />
+75-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:54:17-76
+75-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:54:27-73
+76            </intent-filter>
+77
+78            <meta-data
+78-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:56:13-58:55
+79                android:name="android.nfc.cardemulation.host_apdu_service"
+79-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:57:17-75
+80                android:resource="@xml/apduservice" />
+80-->E:\Learning\Python\mobil\nfc_poc\app\src\main\AndroidManifest.xml:58:17-52
+81        </service>
+82
+83        <provider
+83-->[androidx.emoji2:emoji2:1.2.0] C:\Users\manig\.gradle\caches\transforms-3\1652c4c0a30d52a85b83c2399ab532ed\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+84            android:name="androidx.startup.InitializationProvider"
+84-->[androidx.emoji2:emoji2:1.2.0] C:\Users\manig\.gradle\caches\transforms-3\1652c4c0a30d52a85b83c2399ab532ed\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+85            android:authorities="com.nfcpoc.debug.androidx-startup"
+85-->[androidx.emoji2:emoji2:1.2.0] C:\Users\manig\.gradle\caches\transforms-3\1652c4c0a30d52a85b83c2399ab532ed\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+86            android:exported="false" >
+86-->[androidx.emoji2:emoji2:1.2.0] C:\Users\manig\.gradle\caches\transforms-3\1652c4c0a30d52a85b83c2399ab532ed\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+87            <meta-data
+87-->[androidx.emoji2:emoji2:1.2.0] C:\Users\manig\.gradle\caches\transforms-3\1652c4c0a30d52a85b83c2399ab532ed\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+88                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+88-->[androidx.emoji2:emoji2:1.2.0] C:\Users\manig\.gradle\caches\transforms-3\1652c4c0a30d52a85b83c2399ab532ed\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+89                android:value="androidx.startup" />
+89-->[androidx.emoji2:emoji2:1.2.0] C:\Users\manig\.gradle\caches\transforms-3\1652c4c0a30d52a85b83c2399ab532ed\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+90            <meta-data
+90-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\manig\.gradle\caches\transforms-3\d80fb3a2cf3d9c4d910519d9cdf1ca9a\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+91                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+91-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\manig\.gradle\caches\transforms-3\d80fb3a2cf3d9c4d910519d9cdf1ca9a\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+92                android:value="androidx.startup" />
+92-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\manig\.gradle\caches\transforms-3\d80fb3a2cf3d9c4d910519d9cdf1ca9a\transformed\lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+93            <meta-data
+93-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+94                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+94-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+95                android:value="androidx.startup" />
+95-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+96        </provider>
+97
+98        <uses-library
+98-->[androidx.window:window:1.0.0] C:\Users\manig\.gradle\caches\transforms-3\c24800a51773f1da025e26a9f347eaa9\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+99            android:name="androidx.window.extensions"
+99-->[androidx.window:window:1.0.0] C:\Users\manig\.gradle\caches\transforms-3\c24800a51773f1da025e26a9f347eaa9\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+100            android:required="false" />
+100-->[androidx.window:window:1.0.0] C:\Users\manig\.gradle\caches\transforms-3\c24800a51773f1da025e26a9f347eaa9\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+101        <uses-library
+101-->[androidx.window:window:1.0.0] C:\Users\manig\.gradle\caches\transforms-3\c24800a51773f1da025e26a9f347eaa9\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+102            android:name="androidx.window.sidecar"
+102-->[androidx.window:window:1.0.0] C:\Users\manig\.gradle\caches\transforms-3\c24800a51773f1da025e26a9f347eaa9\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+103            android:required="false" />
+103-->[androidx.window:window:1.0.0] C:\Users\manig\.gradle\caches\transforms-3\c24800a51773f1da025e26a9f347eaa9\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+104
+105        <service
+105-->[androidx.room:room-runtime:2.6.1] C:\Users\manig\.gradle\caches\transforms-3\d2d48dd98adeb3d0d18d109726a74a22\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+106            android:name="androidx.room.MultiInstanceInvalidationService"
+106-->[androidx.room:room-runtime:2.6.1] C:\Users\manig\.gradle\caches\transforms-3\d2d48dd98adeb3d0d18d109726a74a22\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+107            android:directBootAware="true"
+107-->[androidx.room:room-runtime:2.6.1] C:\Users\manig\.gradle\caches\transforms-3\d2d48dd98adeb3d0d18d109726a74a22\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+108            android:exported="false" />
+108-->[androidx.room:room-runtime:2.6.1] C:\Users\manig\.gradle\caches\transforms-3\d2d48dd98adeb3d0d18d109726a74a22\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+109
+110        <receiver
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+111            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+111-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+112            android:directBootAware="false"
+112-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+113            android:enabled="true"
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+114            android:exported="true"
+114-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+115            android:permission="android.permission.DUMP" >
+115-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+116            <intent-filter>
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+117                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+117-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+118            </intent-filter>
+119            <intent-filter>
+119-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+120                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+120-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+120-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+121            </intent-filter>
+122            <intent-filter>
+122-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+123                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+123-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+123-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+124            </intent-filter>
+125            <intent-filter>
+125-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+126                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+126-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\manig\.gradle\caches\transforms-3\6924fa5f5351d6479e5932da807bf5c6\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+127            </intent-filter>
+128        </receiver>
+129    </application>
+130
+131</manifest>

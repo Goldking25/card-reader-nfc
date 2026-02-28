@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-mergeDebugResources-52:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-mergeDebugResources-52:\\layout\\item_card.xml",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\item_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-mergeDebugResources-52:\\layout\\dialog_save_card.xml",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\dialog_save_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-mergeDebugResources-52:\\layout\\fragment_scan.xml",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\fragment_scan.xml"
+    },
+    {
+        "merged": "com.nfcpoc.app-mergeDebugResources-52:/layout/fragment_card_list.xml",
+        "source": "com.nfcpoc.app-main-55:/layout/fragment_card_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-mergeDebugResources-52:\\layout\\activity_card_detail.xml",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\activity_card_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-mergeDebugResources-52:\\layout\\fragment_replay.xml",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\fragment_replay.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-mergeDebugResources-52:\\layout\\fragment_card_list.xml",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\fragment_card_list.xml"
+    }
+]

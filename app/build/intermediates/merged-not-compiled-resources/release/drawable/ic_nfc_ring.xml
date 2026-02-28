@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- NFC ring/wave icon for scan screen -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="180dp"
+    android:height="180dp"
+    android:viewportWidth="180"
+    android:viewportHeight="180">
+    <!-- Outer ring -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#7C4DFF"
+        android:strokeWidth="3"
+        android:pathData="M90,20 A70,70 0 1,1 89.9,20" />
+    <!-- Middle ring -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#7C4DFF"
+        android:strokeWidth="2.5"
+        android:strokeAlpha="0.6"
+        android:pathData="M90,38 A52,52 0 1,1 89.9,38" />
+    <!-- Inner ring -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#7C4DFF"
+        android:strokeWidth="2"
+        android:strokeAlpha="0.35"
+        android:pathData="M90,56 A34,34 0 1,1 89.9,56" />
+    <!-- Center NFC symbol -->
+    <path
+        android:fillColor="#7C4DFF"
+        android:pathData="M83,72 L83,108 L90,108 L97,72 Z" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="3"
+        android:pathData="M72,78 Q72,90 83,90" />
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#00E5FF"
+        android:strokeWidth="3"
+        android:pathData="M108,78 Q108,90 97,90" />
+</vector>

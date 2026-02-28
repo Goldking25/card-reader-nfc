@@ -1,0 +1,50 @@
+<resources>
+    <string name="app_name">NFC PoC</string>
+
+    <!-- Bottom navigation -->
+    <string name="nav_scan">Scan</string>
+    <string name="nav_cards">Cards</string>
+    <string name="nav_replay">Replay</string>
+
+    <!-- Scan screen -->
+    <string name="scan_idle_hint">Hold an NFC card to the back of your phone</string>
+    <string name="scan_reading">Reading card…</string>
+    <string name="scan_success">Card read successfully</string>
+    <string name="scan_error">Failed to read card</string>
+    <string name="save_card_title">Save Card</string>
+    <string name="card_saved">Card saved!</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="label_hint">Label (optional)</string>
+
+    <!-- Card list screen -->
+    <string name="delete_card_title">Delete Card</string>
+    <string name="delete_card_message">Delete \'%s\'?</string>
+    <string name="delete_all_title">Delete All Cards</string>
+    <string name="delete_all_message">This will permanently delete all stored card dumps.</string>
+    <string name="delete">Delete</string>
+    <string name="card_deleted">Card deleted</string>
+    <string name="all_cards_deleted">All cards deleted</string>
+    <string name="no_cards_stored">No cards stored yet.\nGo to Scan to capture your first card.</string>
+    <string name="ok">OK</string>
+
+    <!-- Replay screen -->
+    <string name="replay_no_card">No card loaded</string>
+    <string name="start_emulation">Start Emulation</string>
+    <string name="stop_emulation">Stop Emulation</string>
+    <string name="emulation_active">HCE Active — Hold phone to reader</string>
+    <string name="emulation_inactive">Emulation inactive</string>
+    <string name="pick_card_title">Select Card to Emulate</string>
+    <string name="no_cards_title">No Cards Available</string>
+    <string name="no_cards_message">Scan and save a card first.</string>
+    <string name="hce_limitation_note">⚠ This card type (MIFARE Classic/Ultralight/NFC-F) cannot be emulated via Android HCE. HCE only supports ISO 14443-4 (IsoDep) cards. Read data is saved for offline analysis.</string>
+
+    <!-- HCE service labels (required by apduservice.xml) -->
+    <string name="hce_service_description">NFC PoC Card Emulation</string>
+    <string name="hce_payment_description">Payment card emulation</string>
+    <string name="hce_transit_description">Transit card emulation</string>
+
+    <!-- Card detail -->
+    <string name="export">Export</string>
+    <string name="load_for_replay">Load for Replay</string>
+</resources>

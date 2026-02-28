@@ -1,0 +1,110 @@
+[
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\menu_menu_card_detail.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\menu\\menu_card_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\navigation_nav_graph.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\navigation\\nav_graph.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\xml_apduservice.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\xml\\apduservice.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\color_bottom_nav_selector.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\color\\bottom_nav_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\drawable_ic_nfc_on.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\drawable\\ic_nfc_on.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\layout_item_card.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\item_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\layout_fragment_card_list.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\fragment_card_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\layout_dialog_save_card.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\dialog_save_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\drawable_ic_nfc_scan.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\drawable\\ic_nfc_scan.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\drawable_ic_delete.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\drawable\\ic_delete.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\drawable_ic_search.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\drawable\\ic_search.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\layout_fragment_scan.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\fragment_scan.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\drawable_ic_nfc_off.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\drawable\\ic_nfc_off.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\layout_fragment_replay.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\fragment_replay.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\xml_nfc_tech_filter.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\xml\\nfc_tech_filter.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\anim_pulse_ring.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\anim\\pulse_ring.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\layout_activity_card_detail.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\layout\\activity_card_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\drawable_ic_cards.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\drawable\\ic_cards.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\drawable_ic_nfc_ring.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\drawable\\ic_nfc_ring.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\drawable_ic_replay.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\drawable\\ic_replay.xml"
+    },
+    {
+        "merged": "com.nfcpoc.app-merged_res-53:/layout_fragment_card_list.xml.flat",
+        "source": "com.nfcpoc.app-main-55:/layout/fragment_card_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\menu_menu_card_list.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\menu\\menu_card_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-merged_res-53:\\drawable_ic_share.xml.flat",
+        "source": "C:\\Users\\manig\\.gradle\\daemon\\8.4\\com.nfcpoc.app-main-55:\\drawable\\ic_share.xml"
+    }
+]

@@ -1,0 +1,178 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "ca6cb53d0b40165cf878764042c15f62",
+    "entities": [
+      {
+        "tableName": "nfc_cards",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `uid` TEXT NOT NULL, `uidRaw` TEXT NOT NULL, `cardType` TEXT NOT NULL, `label` TEXT NOT NULL, `timestamp` INTEGER NOT NULL, `techList` TEXT NOT NULL, `sectors` TEXT NOT NULL, `mifareSize` INTEGER NOT NULL, `mifareType` INTEGER NOT NULL, `authenticatedSectorCount` INTEGER NOT NULL, `pages` TEXT NOT NULL, `ultralightType` INTEGER NOT NULL, `historicalBytes` TEXT, `atqa` TEXT, `sak` INTEGER, `hiLayerResponse` TEXT, `applicationData` TEXT, `protocolInfo` TEXT, `idm` TEXT, `pmm` TEXT, `systemCode` TEXT, `apduLog` TEXT NOT NULL, `selectedAid` TEXT, `notes` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uid",
+            "columnName": "uid",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "uidRaw",
+            "columnName": "uidRaw",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cardType",
+            "columnName": "cardType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "label",
+            "columnName": "label",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timestamp",
+            "columnName": "timestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "techList",
+            "columnName": "techList",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sectors",
+            "columnName": "sectors",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mifareSize",
+            "columnName": "mifareSize",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mifareType",
+            "columnName": "mifareType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "authenticatedSectorCount",
+            "columnName": "authenticatedSectorCount",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pages",
+            "columnName": "pages",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ultralightType",
+            "columnName": "ultralightType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "historicalBytes",
+            "columnName": "historicalBytes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "atqa",
+            "columnName": "atqa",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "sak",
+            "columnName": "sak",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hiLayerResponse",
+            "columnName": "hiLayerResponse",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "applicationData",
+            "columnName": "applicationData",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "protocolInfo",
+            "columnName": "protocolInfo",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "idm",
+            "columnName": "idm",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "pmm",
+            "columnName": "pmm",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "systemCode",
+            "columnName": "systemCode",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "apduLog",
+            "columnName": "apduLog",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "selectedAid",
+            "columnName": "selectedAid",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "notes",
+            "columnName": "notes",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "id"
+          ]
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'ca6cb53d0b40165cf878764042c15f62')"
+    ]
+  }
+}

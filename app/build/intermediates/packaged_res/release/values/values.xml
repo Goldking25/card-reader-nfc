@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="badge_iso_dep_a">#00BFA5</color>
+    <color name="badge_iso_dep_b">#00ACC1</color>
+    <color name="badge_mifare_classic">#FF5252</color>
+    <color name="badge_mifare_ultralight">#FF9100</color>
+    <color name="badge_nfc_f">#AB47BC</color>
+    <color name="badge_nfc_v">#7E57C2</color>
+    <color name="badge_unknown">#78909C</color>
+    <color name="color_background">#0D0D18</color>
+    <color name="color_error">#FF5370</color>
+    <color name="color_nfc_ring">#7C4DFF</color>
+    <color name="color_nfc_ring_active">#00E5FF</color>
+    <color name="color_on_background">#E8E8FF</color>
+    <color name="color_on_primary">#FFFFFF</color>
+    <color name="color_on_secondary">#000000</color>
+    <color name="color_on_surface">#E8E8FF</color>
+    <color name="color_on_surface_dim">#9E9EBF</color>
+    <color name="color_primary">#7C4DFF</color>
+    <color name="color_primary_variant">#5E35B1</color>
+    <color name="color_secondary">#00E5FF</color>
+    <color name="color_secondary_variant">#00B2CC</color>
+    <color name="color_success">#69FF47</color>
+    <color name="color_surface">#16162A</color>
+    <color name="color_surface_variant">#1E1E36</color>
+    <color name="color_warning">#FFAB40</color>
+    <string name="all_cards_deleted">All cards deleted</string>
+    <string name="app_name">NFC PoC</string>
+    <string name="cancel">Cancel</string>
+    <string name="card_deleted">Card deleted</string>
+    <string name="card_saved">Card saved!</string>
+    <string name="delete">Delete</string>
+    <string name="delete_all_message">This will permanently delete all stored card dumps.</string>
+    <string name="delete_all_title">Delete All Cards</string>
+    <string name="delete_card_message">Delete \'%s\'?</string>
+    <string name="delete_card_title">Delete Card</string>
+    <string name="emulation_active">HCE Active — Hold phone to reader</string>
+    <string name="emulation_inactive">Emulation inactive</string>
+    <string name="export">Export</string>
+    <string name="hce_limitation_note">⚠ This card type (MIFARE Classic/Ultralight/NFC-F) cannot be emulated via Android HCE. HCE only supports ISO 14443-4 (IsoDep) cards. Read data is saved for offline analysis.</string>
+    <string name="hce_payment_description">Payment card emulation</string>
+    <string name="hce_service_description">NFC PoC Card Emulation</string>
+    <string name="hce_transit_description">Transit card emulation</string>
+    <string name="label_hint">Label (optional)</string>
+    <string name="load_for_replay">Load for Replay</string>
+    <string name="nav_cards">Cards</string>
+    <string name="nav_replay">Replay</string>
+    <string name="nav_scan">Scan</string>
+    <string name="no_cards_message">Scan and save a card first.</string>
+    <string name="no_cards_stored">No cards stored yet.\nGo to Scan to capture your first card.</string>
+    <string name="no_cards_title">No Cards Available</string>
+    <string name="ok">OK</string>
+    <string name="pick_card_title">Select Card to Emulate</string>
+    <string name="replay_no_card">No card loaded</string>
+    <string name="save">Save</string>
+    <string name="save_card_title">Save Card</string>
+    <string name="scan_error">Failed to read card</string>
+    <string name="scan_idle_hint">Hold an NFC card to the back of your phone</string>
+    <string name="scan_reading">Reading card…</string>
+    <string name="scan_success">Card read successfully</string>
+    <string name="start_emulation">Start Emulation</string>
+    <string name="stop_emulation">Stop Emulation</string>
+    <style name="TextAppearance.NfcPoc.HexDump" parent="TextAppearance.Material3.BodySmall">
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:textColor">@color/color_secondary</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">0.05</item>
+    </style>
+    <style name="Theme.NfcPoc" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryVariant">@color/color_primary_variant</item>
+        <item name="colorSecondary">@color/color_secondary</item>
+        <item name="colorSecondaryVariant">@color/color_secondary_variant</item>
+        <item name="android:colorBackground">@color/color_background</item>
+        <item name="colorSurface">@color/color_surface</item>
+        <item name="colorError">@color/color_error</item>
+        <item name="colorOnPrimary">@color/color_on_primary</item>
+        <item name="colorOnBackground">@color/color_on_background</item>
+        <item name="colorOnSurface">@color/color_on_surface</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:statusBarColor">@color/color_background</item>
+        <item name="android:navigationBarColor">@color/color_surface</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Widget.NfcPoc.Badge" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/color_on_primary</item>
+    </style>
+    <style name="Widget.NfcPoc.Card" parent="Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@color/color_surface_variant</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">4dp</item>
+    </style>
+    <style name="Widget.NfcPoc.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/color_surface</item>
+        <item name="titleTextColor">@color/color_on_surface</item>
+    </style>
+</resources>
