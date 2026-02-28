@@ -1,0 +1,88 @@
+name: Release — Sign & Publish APK
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'   # Triggered by tags like v1.0.0, v1.2.3
+
+jobs:
+  release:
+    name: Build, Sign & Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # ── Run unit tests before releasing ───────────────────────────────
+      - name: Run unit tests
+        run: ./gradlew test --stacktrace
+
+      # ── Decode keystore from base64 secret ────────────────────────────
+      # Store your .jks as a base64 string: base64 -w 0 nfc_poc_key.jks
+      # Add to GitHub Secrets as KEYSTORE_BASE64
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > $RUNNER_TEMP/nfc_poc_key.jks
+
+      # ── Build signed release APK ──────────────────────────────────────
+      - name: Build release APK
+        run: |
+          ./gradlew assembleRelease \
+            -Pandroid.injected.signing.store.file=$RUNNER_TEMP/nfc_poc_key.jks \
+            -Pandroid.injected.signing.store.password=${{ secrets.KEYSTORE_PASSWORD }} \
+            -Pandroid.injected.signing.key.alias=${{ secrets.KEY_ALIAS }} \
+            -Pandroid.injected.signing.key.password=${{ secrets.KEY_PASSWORD }} \
+            --stacktrace
+
+      # ── Extract version name from tag ──────────────────────────────────
+      - name: Get version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF_NAME}" >> $GITHUB_OUTPUT
+
+      # ── Rename APK to include version ─────────────────────────────────
+      - name: Rename APK
+        run: |
+          mv app/build/outputs/apk/release/app-release.apk \
+             app/build/outputs/apk/release/nfc-poc-${{ steps.version.outputs.VERSION }}.apk
+
+      # ── Create GitHub Release with APK ────────────────────────────────
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: "NFC PoC ${{ steps.version.outputs.VERSION }}"
+          body: |
+            ## NFC PoC ${{ steps.version.outputs.VERSION }}
+
+            ### What's included
+            - Signed release APK ready to install on any Android 8+ device
+            - Supports: MIFARE Classic, Ultralight, ISO-DEP (payment/transit), FeliCa, NFC-B
+
+            ### Install
+            ```
+            adb install -r nfc-poc-${{ steps.version.outputs.VERSION }}.apk
+            ```
+          files: |
+            app/build/outputs/apk/release/nfc-poc-${{ steps.version.outputs.VERSION }}.apk
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── Upload APK as artifact too ────────────────────────────────────
+      - name: Upload release APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nfc-poc-${{ steps.version.outputs.VERSION }}
+          path: app/build/outputs/apk/release/nfc-poc-${{ steps.version.outputs.VERSION }}.apk
+          retention-days: 90
