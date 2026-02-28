@@ -23,7 +23,11 @@ param(
 $ErrorActionPreference = "Stop"
 $tag = "v$Version"
 
-Write-Host "`n=== NFC PoC Release: $tag ===" -ForegroundColor Cyan
+# Auto-detect the remote name (might not be 'origin')
+$remote = git remote | Select-Object -First 1
+if (-not $remote) { Write-Host "ERROR: No git remote configured." -ForegroundColor Red; exit 1 }
+
+Write-Host "`n=== NFC PoC Release: $tag (remote: $remote) ===" -ForegroundColor Cyan
 
 # 1. Check for uncommitted changes
 $status = git status --porcelain
@@ -43,7 +47,7 @@ if ($branch -ne "main") {
 
 # 3. Pull latest
 Write-Host "Pulling latest from origin/$branch..." -ForegroundColor Gray
-git pull origin $branch
+git pull $remote $branch
 
 # 4. Create annotated tag
 Write-Host "Creating tag $tag..." -ForegroundColor Gray
@@ -51,8 +55,8 @@ git tag -a $tag -m $Message
 
 # 5. Push tag
 Write-Host "Pushing $tag to origin..." -ForegroundColor Gray
-git push origin $tag
+git push $remote $tag
 
-Write-Host "`n[OK] Tag $tag pushed!" -ForegroundColor Green
+Write-Host "`n[OK] Tag $tag pushed to $remote!" -ForegroundColor Green
 Write-Host "     GitHub Actions release pipeline will start shortly."
 Write-Host "     Check: https://github.com/<your-org>/<your-repo>/actions`n"
