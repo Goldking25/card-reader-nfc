@@ -31,6 +31,10 @@ class ScanViewModel(application: Application) : AndroidViewModel(application) {
     private val _uiState = MutableLiveData<ScanUiState>(ScanUiState.Idle)
     val uiState: LiveData<ScanUiState> = _uiState
 
+    private val _isScanActive = MutableLiveData<Boolean>(false)
+    val isScanActive: LiveData<Boolean> = _isScanActive
+    private var scanTimeoutJob: kotlinx.coroutines.Job? = null
+
     /** Stores the most recently scanned card (not yet persisted). */
     private var pendingCard: NfcCard? = null
 
@@ -39,8 +43,9 @@ class ScanViewModel(application: Application) : AndroidViewModel(application) {
      * Launches tag reading on the IO dispatcher.
      */
     fun onTagDiscovered(tag: Tag) {
-        if (_uiState.value is ScanUiState.Reading) return // ignore if already reading
+        if (_uiState.value is ScanUiState.Reading || _isScanActive.value != true) return // ignore if already reading or not active
 
+        stopScan() // Stop the timeout
         _uiState.value = ScanUiState.Reading
         viewModelScope.launch(Dispatchers.IO) {
             try {
@@ -76,6 +81,25 @@ class ScanViewModel(application: Application) : AndroidViewModel(application) {
     fun reset() {
         pendingCard = null
         _uiState.value = ScanUiState.Idle
+        stopScan()
+    }
+
+    fun startScan() {
+        reset()
+        _isScanActive.value = true
+        scanTimeoutJob?.cancel()
+        scanTimeoutJob = viewModelScope.launch {
+            kotlinx.coroutines.delay(30000)
+            if (_isScanActive.value == true) {
+                stopScan()
+                _uiState.postValue(ScanUiState.Error("Scan timed out after 30 seconds"))
+            }
+        }
+    }
+
+    fun stopScan() {
+        _isScanActive.value = false
+        scanTimeoutJob?.cancel()
     }
 
     private fun ByteArray.toHexString(): String =

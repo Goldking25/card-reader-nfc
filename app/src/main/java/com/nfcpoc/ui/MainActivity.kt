@@ -70,7 +70,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        enableForegroundDispatch()
+        val scanViewModel = obtainScanViewModel()
+        if (scanViewModel.isScanActive.value == true && !com.nfcpoc.hce.EmulationSessionManager.isEmulating) {
+            enableForegroundDispatch()
+        } else {
+            disableForegroundDispatch()
+        }
     }
 
     override fun onPause() {
@@ -87,6 +92,14 @@ class MainActivity : AppCompatActivity() {
         navController.navigateUp() || super.onSupportNavigateUp()
 
     // ─────────────────────────────────────────────────────────────────────────
+
+    fun toggleNfcDispatch(enable: Boolean) {
+        if (enable && !com.nfcpoc.hce.EmulationSessionManager.isEmulating) {
+            enableForegroundDispatch()
+        } else {
+            disableForegroundDispatch()
+        }
+    }
 
     private fun enableForegroundDispatch() {
         val adapter = nfcAdapter ?: return

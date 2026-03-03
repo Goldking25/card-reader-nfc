@@ -59,9 +59,26 @@ class ScanFragment : Fragment() {
                 is ScanUiState.Saved -> onCardSaved()
             }
         }
+        viewModel.isScanActive.observe(viewLifecycleOwner) { isActive ->
+            (requireActivity() as? com.nfcpoc.ui.MainActivity)?.toggleNfcDispatch(isActive)
+            if (isActive) {
+                startRingAnimation()
+                binding.btnStartScan.visibility = View.GONE
+                if (viewModel.uiState.value is ScanUiState.Idle) {
+                    binding.tvStatus.text = getString(R.string.scan_idle_hint)
+                }
+            } else {
+                stopRingAnimation()
+                if (viewModel.uiState.value is ScanUiState.Idle) {
+                    binding.btnStartScan.visibility = View.VISIBLE
+                    binding.tvStatus.text = "Ready to scan. Press 'Start Scan'."
+                }
+            }
+        }
     }
 
     private fun setupClickListeners() {
+        binding.btnStartScan.setOnClickListener { viewModel.startScan() }
         binding.btnSaveCard.setOnClickListener { showSaveDialog() }
         binding.btnReset.setOnClickListener { viewModel.reset() }
     }
@@ -77,15 +94,22 @@ class ScanFragment : Fragment() {
             cardResultCard.visibility = View.GONE
             btnSaveCard.visibility = View.GONE
             btnReset.visibility = View.GONE
-            tvStatus.text = getString(R.string.scan_idle_hint)
+            if (viewModel.isScanActive.value == true) {
+                btnStartScan.visibility = View.GONE
+                tvStatus.text = getString(R.string.scan_idle_hint)
+            } else {
+                btnStartScan.visibility = View.VISIBLE
+                tvStatus.text = "Ready to scan. Press 'Start Scan'."
+            }
         }
-        startRingAnimation()
+        if (viewModel.isScanActive.value == true) startRingAnimation() else stopRingAnimation()
     }
 
     private fun showReadingState() {
         stopRingAnimation()
         binding.apply {
             nfcRingView.visibility = View.GONE
+            btnStartScan.visibility = View.GONE
             progressIndicator.visibility = View.VISIBLE
             cardResultCard.visibility = View.GONE
             btnSaveCard.visibility = View.GONE
@@ -98,6 +122,7 @@ class ScanFragment : Fragment() {
         binding.apply {
             progressIndicator.visibility = View.GONE
             nfcRingView.visibility = View.GONE
+            btnStartScan.visibility = View.GONE
             cardResultCard.visibility = View.VISIBLE
             btnSaveCard.visibility = View.VISIBLE
             btnReset.visibility = View.VISIBLE
@@ -134,12 +159,13 @@ class ScanFragment : Fragment() {
         binding.apply {
             progressIndicator.visibility = View.GONE
             nfcRingView.visibility = View.VISIBLE
+            btnStartScan.visibility = View.GONE
             cardResultCard.visibility = View.GONE
             btnSaveCard.visibility = View.GONE
             btnReset.visibility = View.VISIBLE
             tvStatus.text = getString(R.string.scan_error)
         }
-        startRingAnimation()
+        stopRingAnimation()
         Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG).show()
     }
 

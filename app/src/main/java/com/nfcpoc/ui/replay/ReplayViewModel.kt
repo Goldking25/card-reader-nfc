@@ -31,6 +31,31 @@ class ReplayViewModel(application: Application) : AndroidViewModel(application) 
 
     /** Load a card into the HCE session and start emulating. */
     fun startEmulation(card: NfcCard) {
+        val nfcAdapter = android.nfc.NfcAdapter.getDefaultAdapter(getApplication())
+        if (nfcAdapter != null) {
+            val componentName = android.content.ComponentName(getApplication(), com.nfcpoc.hce.HceEmulationService::class.java)
+            val emulation = android.nfc.cardemulation.CardEmulation.getInstance(nfcAdapter)
+            val aids = mutableSetOf<String>()
+            if (!card.selectedAid.isNullOrBlank()) aids.add(card.selectedAid.uppercase())
+            card.apduLog.forEach { exchange ->
+                if (exchange.command.startsWith("00A404", true) && exchange.command.length >= 10) {
+                    try {
+                        val lc = exchange.command.substring(8, 10).toInt(16)
+                        if (exchange.command.length >= 10 + lc * 2) {
+                            val aidHex = exchange.command.substring(10, 10 + lc * 2)
+                            aids.add(aidHex.uppercase())
+                        }
+                    } catch (e: Exception) {
+                        Timber.e(e, "Error parsing AID from APDU log")
+                    }
+                }
+            }
+            if (aids.isNotEmpty()) {
+                val registered = emulation.registerAidsForService(componentName, "other", aids.toList())
+                Timber.i("ReplayViewModel: registered dynamic AIDs ($aids) = $registered")
+            }
+        }
+
         EmulationSessionManager.loadCard(card)
         _activeCard.value = card
         _isEmulating.value = true
@@ -42,6 +67,15 @@ class ReplayViewModel(application: Application) : AndroidViewModel(application) 
         EmulationSessionManager.clearSession()
         _activeCard.value = null
         _isEmulating.value = false
+
+        val nfcAdapter = android.nfc.NfcAdapter.getDefaultAdapter(getApplication())
+        if (nfcAdapter != null) {
+            val componentName = android.content.ComponentName(getApplication(), com.nfcpoc.hce.HceEmulationService::class.java)
+            val emulation = android.nfc.cardemulation.CardEmulation.getInstance(nfcAdapter)
+            emulation.removeAidsForService(componentName, "other")
+            Timber.i("ReplayViewModel: removed dynamic AIDs from service")
+        }
+
         Timber.i("ReplayViewModel: emulation stopped")
     }
 

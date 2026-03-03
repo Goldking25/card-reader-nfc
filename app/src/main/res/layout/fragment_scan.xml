@@ -38,6 +38,18 @@
             app:layout_constraintStart_toStartOf="@id/nfcRingView"
             app:layout_constraintEnd_toEndOf="@id/nfcRingView" />
 
+        <!-- Start Scan button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnStartScan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Start Scan"
+            app:layout_constraintTop_toBottomOf="@id/nfcRingView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvStatus" />
+
         <!-- Status text -->
         <TextView
             android:id="@+id/tvStatus"
@@ -47,7 +59,7 @@
             android:gravity="center"
             android:textColor="@color/color_on_surface_dim"
             android:textSize="14sp"
-            app:layout_constraintTop_toBottomOf="@id/nfcRingView"
+            app:layout_constraintTop_toBottomOf="@id/btnStartScan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@id/cardResultCard" />
