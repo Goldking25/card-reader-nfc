@@ -43,7 +43,7 @@ class ScanViewModel(application: Application) : AndroidViewModel(application) {
      * Launches tag reading on the IO dispatcher.
      */
     fun onTagDiscovered(tag: Tag) {
-        if (_uiState.value is ScanUiState.Reading || _isScanActive.value != true) return // ignore if already reading or not active
+        if (_uiState.value is ScanUiState.Reading) return // ignore if already reading
 
         stopScan() // Stop the timeout
         _uiState.value = ScanUiState.Reading
