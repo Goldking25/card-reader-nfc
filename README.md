@@ -13,8 +13,7 @@ A production-ready Android application (Kotlin) for NFC security research demons
 
 **Target Device**: OnePlus phone with OxygenOS 16 (NXP NFC chipset — fully compatible)
 
----
-
+***
 ## Architecture
 
 ```
