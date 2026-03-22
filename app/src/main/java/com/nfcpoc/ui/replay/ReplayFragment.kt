@@ -113,11 +113,8 @@ class ReplayFragment : Fragment() {
     }
 
     private fun updateEmulatingUi(emulating: Boolean) {
-        // Toggle the foreground dispatch in MainActivity
-        // Important: While emulating, we shouldn't act as a reader!
-        (requireActivity() as? com.nfcpoc.ui.MainActivity)?.toggleNfcDispatch(
-            enable = !emulating // if emulating, DO NOT enable foreground dispatch
-        )
+        // Toggle the foreground dispatch and HCE preferred service in MainActivity
+        (requireActivity() as? com.nfcpoc.ui.MainActivity)?.updateNfcState()
 
         if (emulating) {
             binding.btnToggleEmulation.text = getString(R.string.stop_emulation)

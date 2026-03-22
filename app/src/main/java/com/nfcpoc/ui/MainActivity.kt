@@ -70,12 +70,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        val scanViewModel = obtainScanViewModel()
-        if (scanViewModel.isScanActive.value == true && !com.nfcpoc.hce.EmulationSessionManager.isEmulating) {
-            enableForegroundDispatch()
-        } else {
-            disableForegroundDispatch()
-        }
+        updateNfcState()
     }
 
     override fun onPause() {
@@ -94,10 +89,41 @@ class MainActivity : AppCompatActivity() {
     // ─────────────────────────────────────────────────────────────────────────
 
     fun toggleNfcDispatch(enable: Boolean) {
-        if (enable && !com.nfcpoc.hce.EmulationSessionManager.isEmulating) {
-            enableForegroundDispatch()
-        } else {
+        updateNfcState()
+    }
+
+    fun updateNfcState() {
+        val emulating = com.nfcpoc.hce.EmulationSessionManager.isEmulating
+        if (emulating) {
             disableForegroundDispatch()
+            enablePreferredService()
+        } else {
+            disablePreferredService()
+            val scanViewModel = obtainScanViewModel()
+            if (scanViewModel.isScanActive.value == true) {
+                enableForegroundDispatch()
+            } else {
+                disableForegroundDispatch()
+            }
+        }
+    }
+
+    private fun enablePreferredService() {
+        val adapter = nfcAdapter ?: return
+        val cardEmulation = android.nfc.cardemulation.CardEmulation.getInstance(adapter)
+        val componentName = android.content.ComponentName(this, com.nfcpoc.hce.HceEmulationService::class.java)
+        cardEmulation.setPreferredService(this, componentName)
+        Timber.d("NFC preferred HCE service enabled")
+    }
+
+    private fun disablePreferredService() {
+        val adapter = nfcAdapter ?: return
+        Timber.d("NFC preferred HCE service disabled")
+        try {
+            val cardEmulation = android.nfc.cardemulation.CardEmulation.getInstance(adapter)
+            cardEmulation.unsetPreferredService(this)
+        } catch (e: Exception) {
+            Timber.e(e, "Error unsetting preferred service")
         }
     }
 
