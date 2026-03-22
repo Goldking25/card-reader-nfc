@@ -1,3 +1,0 @@
-com.nfcpoc.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme
